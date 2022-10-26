@@ -14,6 +14,7 @@ const {
 
 router.get("/all", async (req, res) => {
   try {
+    
     const users = await User.find().lean().exec();
     res.status(200).send(users);
   } catch (err) {
@@ -71,5 +72,29 @@ router.post("/login-influencer", async (req, res) => {
 router.get("/profile", userAuth, async (req, res) => {
   return res.json(serilizeUser(req.user));
 });
+
+
+// Promise
+// async
+// await
+// express middleware
+
+
+//what is req, res
+//req.body
+//req.params
+//req.querry
+
+
+
+// delete user ----admin access 
+
+
+// delete user account--- user access [deleting own ac]
+
+//edit profile ---- every user will have access to his own profile edit
+
+
+
 
 module.exports = router;
