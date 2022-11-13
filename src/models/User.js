@@ -15,6 +15,11 @@ const UserSchema = new Schema(
       default: "user",
       enum: ["user", "admin", "influencer"],
     },
+    bio: {
+      type: String,
+      required: true,
+      default:"Influencer"
+    },
     username: {
       type: String,
       required: true,
@@ -26,17 +31,17 @@ const UserSchema = new Schema(
     phone: {
       type: String,
     },
-    instagram:{
-      type:String
+    instagram: {
+      type: String,
     },
-   facebook:{
-      type:String
+    facebook: {
+      type: String,
     },
-    linkedin:{
-      type:String
+    linkedin: {
+      type: String,
     },
-    youtube:{
-      type:String
+    youtube: {
+      type: String,
     },
     status: {
       type: String,

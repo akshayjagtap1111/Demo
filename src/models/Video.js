@@ -3,14 +3,11 @@ const { Schema, model } = require("mongoose");
 const videoSchema = new Schema(
   {
     owner: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "users",
       required: true,
     },
-
-    video_name: {
-      type: String,
-      required: true,
-    },
+    
     title: {
       type: String,
       required: true,
@@ -25,7 +22,7 @@ const videoSchema = new Schema(
     published_date: {
       type: String,
     },
-    desc: {
+    description: {
       type: String,
     },
     genre: {

@@ -10,7 +10,7 @@ const app = express();
 
 // const { PORT } = require("./src/config/index");
 
-const port = process.env.PORT ||3000;
+const port = process.env.PORT ||5000;
 
 const connectDB = require("./src/config/db");
 

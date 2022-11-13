@@ -7,9 +7,10 @@ const { use } = require("passport/lib");
 
 const userRegister = async (userDetails, role, res) => {
   try {
+    console.log("tried to register");
     let usernameNotTaken = await validateUsername(userDetails.username);
     if (!usernameNotTaken) {
-      return res.status(400).send({
+      return res.status(400).json({
         message: "username already taken",
         success: false,
       });
@@ -31,7 +32,7 @@ const userRegister = async (userDetails, role, res) => {
       password,
       role,
     });
-    
+
     await newUser.save();
 
     return res.status(201).json({
@@ -96,9 +97,7 @@ const userLogin = async (userDetails, role, res) => {
         success: false,
       });
     }
-  } catch (err) {
-    
-  }
+  } catch (err) {}
 };
 
 const validateUsername = async (username) => {
@@ -119,10 +118,19 @@ const userAuth = passport.authenticate("jwt", { session: false });
 
 const serilizeUser = (user) => {
   return {
+    name: user.name,
+    phone: user.phone,
     username: user.username,
     email: user.email,
+    bio: user.bio,
     _id: user._id,
     role: user.role,
+    status: user.status,
+    instagram: user.instagram,
+    facebook: user.facebook,
+    linkedin: user.linkedin,
+    youtube: user.youtube,
+    blocklist: user.blocklist,
     updatedAt: user.updatedAt,
     createdAt: user.createdAt,
   };

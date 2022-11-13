@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/all", async (req, res) => {
   try {
-    const videos = await Video.find().lean().exec();
+    const videos = await Video.find().populate("owner").lean().exec();
     res.status(200).send(videos);
   } catch (err) {
     res.status(500).json({
@@ -18,7 +18,7 @@ router.get("/all", async (req, res) => {
 router.get("/for_user/:userID", async (req, res) => {
   try {
     let userID = req.params.userID;
-    const videos = await Video.find({ owner: userID }).lean().exec();
+    const videos = await Video.find({ owner: userID }).populate().lean().exec();
     res.status(200).send(videos);
   } catch (err) {
     res.status(500).json({
